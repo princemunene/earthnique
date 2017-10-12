@@ -178,11 +178,12 @@ function printusbpage(text){
           hidePageRange: true
         };
 
-     // cordova.plugins.printer.print(htmlContent, options).then(function(msg){
-       // console.log('Print Ok: ' + msg);
-     // });
+     /* cordova.plugins.printer.print(htmlContent, options).then(function(msg){
+        console.log('Print Ok: ' + msg);
+      });
+*/
 
-  cordova.plugins.printer.print(htmlContent, options, function (res) {
+  cordova.plugins.printer.print(htmlContent, { duplex: 'long' }, function (res) {
     alert(res ? 'Done' : 'Canceled');
   });
 
