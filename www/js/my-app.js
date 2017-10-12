@@ -163,9 +163,28 @@ document.addEventListener('deviceready', function () {
 
 function printusbpage(text){
 
-  cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
-    alert(res ? 'Done' : 'Canceled');
-});
+      var htmlContent = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Title</title> <link href='css/print.css' rel='stylesheet' /></head><body><div>test print</div></body></html>"
+
+      msg='message';
+      var options = {
+          name: 'print-job', // printjob name
+          printerId: $scope.PrinterUrl, // network url of the printer to use (iOS only)
+          //duplex: false, // default true (double sided) (iOS only)
+          landscape: false, // default false (portrait)
+          graystyle: true, // prints black and white (default), but true has better performance
+          bounds: {left:0, top:0, width:0, height:0}, // size and position of the print view (iPad only)
+          hidePaperFormat: true,
+          border: false,
+          hidePageRange: true
+        };
+
+      cordova.plugins.printer.print(htmlContent, options).then(function(msg){
+        console.log('Print Ok: ' + msg);
+      });
+
+  //cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
+   // alert(res ? 'Done' : 'Canceled');
+  //});
 
 }
 
