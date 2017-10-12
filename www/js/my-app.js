@@ -156,6 +156,9 @@ function printreceipt(text){
 
 }
 //usb printing
+document.addEventListener('deviceready', function () {
+    // cordova.plugins.printer is now available
+}, false);
 
 /*
     Copyright 2013-2016 appPlant GmbH
@@ -175,7 +178,6 @@ function printreceipt(text){
     under the License.
 */
 
-var exec = require('cordova/exec');
 
 /**
  * List of all available options with their default value.
