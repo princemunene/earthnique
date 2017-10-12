@@ -153,6 +153,14 @@ function printreceipt(text){
 
 
 }
+
+function printusbpage(text){
+
+  cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
+    alert(res ? 'Done' : 'Canceled');
+});
+  
+}
 // Convert numbers to words
 // copyright 25th July 2006, by Stephen Chapman http://javascript.about.com
 // permission to use this Javascript on your web page is granted
