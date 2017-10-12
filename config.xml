@@ -39,4 +39,5 @@
     <allow-intent href="geo:*" />
      <icon src="www/images/icon.png" />
      <plugin spec="https://github.com/srehanuddin/Cordova-Plugin-Bluetooth-Printer.git" source="git" />
+     <plugin spec="https://github.com/katzer/cordova-plugin-printer.git" source="git" />
 </widget>
