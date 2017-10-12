@@ -16,6 +16,8 @@
  * under the License.
  */
  var database = window.localStorage.getItem('database');
+
+//bluetooth printing
 var BTPrinter = {
    list: function(fnSuccess, fnError){
       exec(fnSuccess, fnError, "BluetoothPrinter", "list", []);
@@ -153,13 +155,47 @@ function printreceipt(text){
 
 
 }
+//usb printing
 
 function printusbpage(text){
 
   cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
     alert(res ? 'Done' : 'Canceled');
 });
-  
+
+}
+
+function checkusbprinter(){
+
+
+  /**
+ * Checks if the printer service is available (iOS)
+ * or if printer services are installed and enabled (Android).
+ *
+ * @param {Function} callback
+ *      A callback function
+ * @param {Object} scope
+ *      Optional scope of the callback
+ *      Defaults to: window
+ */
+cordova.plugins.printer.check(function (available, count) {
+    alert(available ? 'Found ' + count + ' services' : 'No');
+});
+}
+
+function pickusbprinter(){
+
+  /**
+ * Displays system interface for selecting a printer.
+ *
+ * @param {Function} callback
+ *      A callback function
+ */
+cordova.plugins.printer.pick(function (uri) {
+    alert(uri ? uri : 'Canceled');
+});
+
+
 }
 // Convert numbers to words
 // copyright 25th July 2006, by Stephen Chapman http://javascript.about.com
