@@ -163,7 +163,8 @@ document.addEventListener('deviceready', function () {
 
 function printusbpage(text){
 
-      var htmlContent = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Title</title> <link href='css/print.css' rel='stylesheet' /></head><body><div>test print</div></body></html>"
+      
+      /*var htmlContent = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Title</title> <link href='css/print.css' rel='stylesheet' /></head><body><div>test print</div></body></html>"
 
       msg='message';
       var options = {
@@ -177,13 +178,14 @@ function printusbpage(text){
           border: false,
           hidePageRange: true
         };
+        */
 
      /* cordova.plugins.printer.print(htmlContent, options).then(function(msg){
         console.log('Print Ok: ' + msg);
       });
-*/
+      */
 
-  cordova.plugins.printer.print(htmlContent, { duplex: 'long' }, function (res) {
+  cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
     alert(res ? 'Done' : 'Canceled');
   });
 
