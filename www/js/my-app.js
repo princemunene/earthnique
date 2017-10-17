@@ -157,9 +157,23 @@ function printreceipt(text){
 }
 //usb printing
 
-document.addEventListener('deviceready', function () {
-    // cordova.plugins.printer is now available
-}, false);
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// Cordova Device Ready.
+function onDeviceReady() {
+
+cordova.plugins.printer.isAvailable(
+    //Check whether the printer is available or not.
+    function (isAvailable) {
+         //Enter the page location.
+         var page = location.href;
+         cordova.plugins.printer.print(page, 'Document.html', function () {
+         alert('printing finished or canceled')
+});
+    }
+);
+
+}
 
 function printusbpage(text){
 
@@ -183,15 +197,11 @@ function printusbpage(text){
      /* cordova.plugins.printer.print(htmlContent, options).then(function(msg){
         console.log('Print Ok: ' + msg);
       });
-      *//*
+      */
 
   cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
     alert(res ? 'Done' : 'Canceled');
   });
-*/
-
-cordova.plugins.bixolonPrint.addLine("hello cordova!");
-cordova.plugins.bixolonPrint.printText();
 
 }
 
