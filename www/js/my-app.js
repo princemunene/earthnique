@@ -183,11 +183,15 @@ function printusbpage(text){
      /* cordova.plugins.printer.print(htmlContent, options).then(function(msg){
         console.log('Print Ok: ' + msg);
       });
-      */
+      *//*
 
   cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
     alert(res ? 'Done' : 'Canceled');
   });
+*/
+
+cordova.plugins.bixolonPrint.addLine("hello cordova!");
+cordova.plugins.bixolonPrint.printText();
 
 }
 
