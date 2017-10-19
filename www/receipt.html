@@ -137,7 +137,7 @@
           
           <script> 
 
-var receipt='<table id="datatable"  style="width:100%;text-align:center;font-size:11px; font-weight:bold;padding:0;" ><tbody> <tr><td  style="width:12%;">'+ window.localStorage.getItem('comadd') + '</td></tr></tbody></table>';
+      var receipt='<table id="datatable"  style="width:100%;text-align:center;font-size:11px; font-weight:bold;padding:0;" ><tbody> <tr><td  style="width:12%;">'+ window.localStorage.getItem('comadd') + '</td></tr></tbody></table>';
 
 
           var text=window.localStorage.getItem('comname') +"\n" + window.localStorage.getItem('comadd') +"\nTel: " + window.localStorage.getItem('comtel') +"\n................................\n\n"+doctype+"\n"+doctype+" No: " + rcptno +"\nDate: " + date +"\nClient Name: "+ client + "\n................................\n"+ formatstring2('Item Name',10)+formatstring2('Qty',3)+'Total' + "\n................................\n" + rows2 + "\n................................\n"+ formatstring2('Total',12)+tot.formatMoney(2, '.', ',')  + "\n" + formatstring2('Amount Tendered',16)+tendered.formatMoney(2, '.', ',') + "\n" + formatstring2('Change',12)+change.formatMoney(2, '.', ',')+"\n\n................................\n\nYou have been Served By: " + cashier +"\n\nSystem Developers: QET SYSTEMS\n\n\n\n\n\n";
@@ -145,7 +145,7 @@ var receipt='<table id="datatable"  style="width:100%;text-align:center;font-siz
           alert(receipt)
 
             </script>
-            <input type="button" name="submit" class="form_submit" id="submit" style="" value="PRINT RECEIPT" onclick="printusbpage(receipt)"/>
+            <input type="button" name="submit" class="form_submit" id="submit" style="" value="PRINT RECEIPT" onclick="printusbpage(page)"/>
         
           </div>
           </div>

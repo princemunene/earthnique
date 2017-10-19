@@ -198,10 +198,15 @@ function printusbpage(text){
         console.log('Print Ok: ' + msg);
       });
       */
-
+      /*
   cordova.plugins.printer.print(text, { duplex: 'long' }, function (res) {
     alert(res ? 'Done' : 'Canceled');
   });
+*/
+
+cordova.plugins.printer.pick(function (uri) {
+    cordova.plugins.printer.print(text, { printerId: uri });
+});
 
 }
 
