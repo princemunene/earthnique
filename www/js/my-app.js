@@ -16,6 +16,7 @@
  * under the License.
  */
  var database = window.localStorage.getItem('database');
+ //$('#credentials').html('<br/><br/>User: '+ window.localStorage.getItem('ls_userid') + '| Branch: ' + window.localStorage.getItem('database'));
 
 //bluetooth printing
 var BTPrinter = {
@@ -1110,7 +1111,7 @@ myApp.onPageInit('stockcontrol', function (page) {
                  saleprice=parseFloat(saleprice);
 				 saleprice=saleprice.formatMoney(2, '.', ',');
 				if(i%2==0){xx='background:#fff';}
-               	$("#myUL").append("<li  onclick='setcontrolcode("+array[i]['ItemCode']+")'><a style='"+xx+"'  href='addcontrol.html'><span class='spancode'>#"+Code+"</span> "+array[i]['ItemName']+"<span class='spanprice'>"+array[i]['Bal']+"</span></a></li>");
+               	$("#myUL").append("<li  onclick='setcontrolcode("+array[i]['ItemCode']+")'><a style='"+xx+"'  href='addcontrol.html'><span class='spancode'>#"+Code+"</span> "+array[i]['ItemName']+"<span class='spanprice'>"+array[i][database]+"</span></a></li>");
             
                }
 
@@ -1182,7 +1183,7 @@ $( ".datepicker" ).datepicker();
 
 
 myApp.onPageInit('settings', function (page) {
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=18&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             for (var i=0;i<result.length;i++){

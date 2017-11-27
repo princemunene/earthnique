@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 include "functions.php";
 $id=$_GET['id'];
-$database=$_GET['database'];
+$userbranch=$database=$_GET['database'];
 db_fns($database);
 
 switch($id){
@@ -37,7 +37,7 @@ break;
 
 case 4:
 $data=array();
-$result =mysql_query("select ItemCode,ItemName,SalePrice,Bal,Type from items order by ItemName");
+$result =mysql_query("select ItemCode,ItemName,SalePrice,".$userbranch.",Type from items order by ItemName");
 while ($row=mysql_fetch_array($result)){
  $data[]=$row;
 }
@@ -55,7 +55,7 @@ $row=mysql_fetch_array($result);
  $('#itemname').html('".stripslashes($row['ItemName'])."');
  $('#itemcateg').html('".stripslashes($row['Category'])."');
  $('#itemtype').html('".stripslashes($row['Type'])."');
- $('#itembal').html('".stripslashes($row['Bal'])."');
+ $('#itembal').html('".stripslashes($row[$userbranch])."');
  $('#quantity').val(1);
  $('#price').val('".stripslashes($row['SalePrice'])."');
  $('#total').val('".number_format($row['SalePrice'], 2, ".", "," )."');
@@ -66,7 +66,7 @@ break;
 case 6:
   
   $arr=array();
-  $result =mysql_query("select * from sales where Type='Sale' order by TransNo desc limit 0,2500");
+  $result =mysql_query("select * from sales where Type='Sale' and Bname='".$userbranch."' order by TransNo desc limit 0,2500");
   $num_results = mysql_num_rows($result);
   for ($i=0; $i <$num_results; $i++) {
       $row=mysql_fetch_array($result);
@@ -119,7 +119,7 @@ case 9:
 		    //line
         $seslinear='';
         $pre=array();
-        $result =mysql_query("select * from sales order by TransNo desc limit 0,3000");
+        $result =mysql_query("select * from sales where  Bname='".$userbranch."' order by TransNo desc limit 0,3000");
         $num_results = mysql_num_rows($result);
         for ($i=0; $i <$num_results; $i++) {
           $row=mysql_fetch_array($result);
@@ -127,7 +127,7 @@ case 9:
         }
         $pre = array_unique($pre);$pre=array_slice($pre,0,10); $pre=array_reverse($pre);
         foreach ($pre as $key => $val) {
-        $result =mysql_query("select * from sales where Date='".$val."' and Type='Sale'");
+        $result =mysql_query("select * from sales where Date='".$val."' and Bname='".$userbranch."' and Type='Sale'");
         $num_results = mysql_num_rows($result);
         $tot=0;
           for ($i=0; $i <$num_results; $i++) {
@@ -183,7 +183,7 @@ case 9:
             $row=mysql_fetch_array($result);
             $lid=stripslashes($row['ledgerid']);
 
-            $resulta =mysql_query("select SUM(debit) as dr, SUM(credit) as cr from ledgerbalances where ledgerid = '".$lid."' and date='".$val."'" );
+            $resulta =mysql_query("select SUM(debit_".$userbranch.") as dr, SUM(credit_".$userbranch.") as cr from ledgerbalances where ledgerid = '".$lid."' and date='".$val."'" );
             $rowa=mysql_fetch_array($resulta);
             $cr1=stripslashes($rowa['cr']);
             $dr1=stripslashes($rowa['dr']);
@@ -228,7 +228,7 @@ case 9:
             $lid=stripslashes($row['ledgerid']);
 
 
-            $resulta =mysql_query("select SUM(debit) as dr, SUM(credit) as cr from ledgerbalances where ledgerid = '".$lid."'" );
+            $resulta =mysql_query("select SUM(debit_".$userbranch.") as dr, SUM(credit_".$userbranch.") as cr from ledgerbalances where ledgerid = '".$lid."'" );
             $rowa=mysql_fetch_array($resulta);
             $cr1=stripslashes($rowa['cr']);
             $dr1=stripslashes($rowa['dr']);
@@ -306,7 +306,7 @@ $row=mysql_fetch_array($result);
  echo"<script>
  $('#itemcode').val('".stripslashes($row['ItemCode'])."');
  $('#itemname').val('".stripslashes($row['ItemName'])."');
- $('#balance').val('".stripslashes($row['Bal'])."');
+ $('#balance').val('".stripslashes($row[$userbranch])."');
  </script>";
 break;
 
@@ -315,13 +315,13 @@ case 14:
 
 
                  $todsales=0;
-                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp='".date('Ymd')."' and Status!=0 and Type='Sale'");
+                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp='".date('Ymd')."' and Status!=0 and Type='Sale' and Bname='".$userbranch."'");
                  $rowa=mysql_fetch_array($resulta);
                  $todsales+=stripslashes($rowa['amount']);
 
 
                  $todsalesmon=0;
-                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp>='".date('Ym')."01' and Stamp<='".date('Ym')."31' and Status!=0 and Type='Sale'");
+                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp>='".date('Ym')."01' and Stamp<='".date('Ym')."31' and Status!=0 and Type='Sale' and Bname='".$userbranch."'");
                  $rowa=mysql_fetch_array($resulta);
                  $todsalesmon+=stripslashes($rowa['amount']);
 
@@ -332,14 +332,14 @@ case 14:
                     $row=mysql_fetch_array($result);
                     $lid=stripslashes($row['ledgerid']);
 
-                    $resulta =mysql_query("select SUM(debit) as dr, SUM(credit) as cr from ledgerbalances where ledgerid = '".$lid."' and stamp='".date('Ymd')."'" );
+                    $resulta =mysql_query("select SUM(debit_".$userbranch.") as dr, SUM(credit_".$userbranch.") as cr from ledgerbalances where ledgerid = '".$lid."' and stamp='".date('Ymd')."'" );
                     $rowa=mysql_fetch_array($resulta);
                     $cr1=stripslashes($rowa['cr']);
                     $dr1=stripslashes($rowa['dr']);
                     $bal=$dr1-$cr1;
                     $todexpenses+=$bal;
 
-                    $resulta =mysql_query("select SUM(debit) as dr, SUM(credit) as cr from ledgerbalances where ledgerid = '".$lid."' and stamp>='".date('Ym')."01'and stamp<='".date('Ym')."31'" );
+                    $resulta =mysql_query("select SUM(debit_".$userbranch.") as dr, SUM(credit_".$userbranch.") as cr from ledgerbalances where ledgerid = '".$lid."' and stamp>='".date('Ym')."01'and stamp<='".date('Ym')."31'" );
                     $rowa=mysql_fetch_array($resulta);
                     $cr1=stripslashes($rowa['cr']);
                     $dr1=stripslashes($rowa['dr']);
@@ -349,7 +349,7 @@ case 14:
                   }
 
                   $cashinhand=0;
-                  $resulta =mysql_query("select SUM(debit) as dr, SUM(credit) as cr from ledgerbalances where ledgerid = '625'" );
+                  $resulta =mysql_query("select SUM(debit_".$userbranch.") as dr, SUM(credit_".$userbranch.") as cr from ledgerbalances where ledgerid = '625'" );
                   $rowa=mysql_fetch_array($resulta);
                   $cr1=stripslashes($rowa['cr']);
                   $dr1=stripslashes($rowa['dr']);
@@ -360,7 +360,7 @@ case 14:
                   $num_results = mysql_num_rows($result); 
                   for ($i=0; $i <$num_results; $i++) {
                     $row=mysql_fetch_array($result);
-                    $value=stripslashes($row['PurchPrice'])*stripslashes($row['Bal']);
+                    $value=stripslashes($row['PurchPrice'])*stripslashes($row[$userbranch]);
                     $inventory+=$value;
 
                   }
@@ -441,7 +441,7 @@ $result =mysql_query("select * from items where Type='GOOD'");
 $num_results = mysql_num_rows($result); 
 for ($i=0; $i <$num_results; $i++) {
 $row=mysql_fetch_array($result); 
-$bal=stripslashes($row['Bal']);
+$bal=stripslashes($row[$userbranch]);
 $minbal=stripslashes($row['MinBal']);
 if($minbal>$bal){
   
@@ -488,7 +488,7 @@ $num_resultsc = mysql_num_rows($resultc);
   //expenses more than sales
 
   $todsalesmon=0;
-  $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp>='".date('Ym')."01' and Stamp<='".date('Ym')."31' and Status!=0");
+  $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp>='".date('Ym')."01' and Stamp<='".date('Ym')."31' and Status!=0 and Bname='".$userbranch."'");
   $rowa=mysql_fetch_array($resulta);
   $todsalesmon+=stripslashes($rowa['amount']);
 
@@ -500,7 +500,7 @@ $num_resultsc = mysql_num_rows($resultc);
   $lid=stripslashes($row['ledgerid']);
 
 
-  $resulta =mysql_query("select SUM(debit) as dr, SUM(credit) as cr from ledgerbalances where ledgerid = '".$lid."' and stamp>='".date('Ym')."01'and stamp<='".date('Ym')."31'" );
+  $resulta =mysql_query("select SUM(debit_".$userbranch.") as dr, SUM(credit_".$userbranch.") as cr from ledgerbalances where ledgerid = '".$lid."' and stamp>='".date('Ym')."01'and stamp<='".date('Ym')."31'" );
   $rowa=mysql_fetch_array($resulta);
   $cr1=stripslashes($rowa['cr']);
   $dr1=stripslashes($rowa['dr']);

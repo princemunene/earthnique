@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 include('functions.php');  
 $id=$_GET['id'];
-$database=$_GET['database'];
+$userbranch=$database=$_GET['database'];
 db_fns($database);
 
 
@@ -10,7 +10,6 @@ switch($id){
 	 
 case 1:
 
-$userbranch='THIKA_1';
 $cname=$_GET['name'];
 $phone=$_GET['phone'];
 $username=$_GET['user'];
@@ -109,7 +108,7 @@ $pname=stripslashes($row['name']);
 									$invlid=stripslashes($rowq['Lid']);
 
 									$itcost = stripslashes($rowq['PurchPrice'])*$itquat;
-									$bal = stripslashes($rowq['Bal']);
+									$bal = stripslashes($rowq[$userbranch]);
 									$qsold = stripslashes($rowq['Qsold']);
 									$qsold+=$itquat;
 									$bal-=$itquat;
@@ -126,7 +125,7 @@ $pname=stripslashes($row['name']);
 										$totgoods+=$itcost;
 										//insert into stock track
 										$resultd = mysql_query("insert into stocktrack values('0','".date('Y/m/d')."','".$userbranch."','".$itcode."','".$itname."','".$pack."','".$stockdesc."','".$itquat."','".$bal."','".$username."','".$stamp."')");	
-										$resultb= mysql_query("update items set Bal='".$bal."',Qsold='".$qsold."' where ItemCode='".$itcode."'");
+										$resultb= mysql_query("update items set ".$userbranch."='".$bal."',Qsold='".$qsold."' where ItemCode='".$itcode."'");
 										
 
 										postjournal(0,$invlid,'Credit','Minus',644,'Debit','Add',$itcost,'Cash Sales-'.$cname.'-Receipt No:'.$rcptno.'',$rcptno,$date,$username,$userbranch);
@@ -190,7 +189,6 @@ case 2:
 //credit note
 $old=$_GET['saleno'];
 $fintot=$_GET['fintot'];
-$userbranch='THIKA_1';
 $username=$_GET['user'];
 $_SESSION['credit']=$creditnote = json_decode( $_GET['creditnote'], true );
 
@@ -259,7 +257,7 @@ $_SESSION['credit']=$creditnote = json_decode( $_GET['creditnote'], true );
 								$vat=stripslashes($rowq['Vat']);
 								$qret=stripslashes($rowq['Qret']);
 								$invlid=stripslashes($rowq['Lid']);
-								$bal=stripslashes($rowq['Bal']);
+								$bal=stripslashes($rowq[$userbranch]);
 
 								
 								
@@ -286,7 +284,7 @@ $_SESSION['credit']=$creditnote = json_decode( $_GET['creditnote'], true );
 								//insert into stock track
 								$resultd = mysql_query("insert into stocktrack values('0','".date('Y/m/d')."','".$bname."','".$itcode."','".$itname."','".$pack."','CREDIT NOTE-RECEIPT NO:".$old."','".$rquat."','".$bal."','".$username."','".$stamp."')");	
 						
-								$resultb= mysql_query("update items set Bal='".$bal."' where ItemCode='".$itcode."'");
+								$resultb= mysql_query("update items set ".$userbranch."='".$bal."' where ItemCode='".$itcode."'");
 								$returnamount=$rtot*(-1);
 								postjournal(0,$invlid,'Debit','Add',644,'Credit','Minus',$returnamount,'Credit Note-'.$cname.'-Receipt No:'.$old.'',$old,$date,$username,$userbranch);
 									
@@ -554,7 +552,7 @@ case 10:
 
 case 11:
 
-$userbranch='THIKA_1';
+
 $itemname=$_GET['itemname'];
 $itemcode=$_GET['itemcode'];
 $description=$_GET['description'];
@@ -566,7 +564,7 @@ $stamp=preg_replace('~/~', '', $date);
 
 $query =mysql_query("select * from items where ItemCode='".$itemcode."'");
 $rowq=mysql_fetch_array($query);
-$obal=stripslashes($rowq['Bal']);
+$obal=stripslashes($rowq[$userbranch]);
 $pack=stripslashes($rowq['Pack']);
 $purchprice=stripslashes($rowq['PurchPrice']);
 $invlid=stripslashes($rowq['Lid']);
@@ -581,7 +579,7 @@ $itcost=$itcost*-1;
 $stockdesc='STOCK ADJUSTMENT FROM: '.$type. '. DESC: '.$description;
 
 $result = mysql_query("insert into stocktrack values('0','".$date."','".$userbranch."','".$itemcode."','".$itemname."','".$pack."','".$stockdesc."','".$qty."','".$bal."','".$username."','".$stamp."')");	
-$resultb= mysql_query("update items set Bal='".$bal."' where ItemCode='".$itemcode."'");
+$resultb= mysql_query("update items set ".$userbranch."='".$bal."' where ItemCode='".$itemcode."'");
 if($itcost>0){
 postjournal(0,$invlid,'Debit','Add',651,'Credit','Minus',$itcost,$stockdesc,0,$date,$username,$userbranch);
 }
@@ -612,7 +610,7 @@ break;
 
 case 13:
 
-$userbranch='THIKA_1';
+
 $drid=$_GET['ledger'];
 $description=$_GET['description'];
 $amount=$_GET['amount'];
@@ -640,7 +638,7 @@ break;
 
 case 14:
 
-$userbranch='THIKA_1';
+
 $drid=$_GET['ledger'];
 $refno=$_GET['refno'];
 $description=$_GET['description'];

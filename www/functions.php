@@ -1,5 +1,6 @@
 <?php 
-function db_fns($database){
+function db_fns(){
+    $database='qetcoke_earthnique';
     //$db = mysql_connect('localhost', 'root', 'admin@123+',true) or die(mysql_error());
     $db = mysql_connect('localhost', 'qetcoke_qet', 'qet@123+',true) or die(mysql_error());
     mysql_select_db($database,$db);
@@ -228,7 +229,7 @@ function checkaccdate($date){
 function updateledgerbalance($lid, $date, $stamp, $txtype, $txamount,$unibcode){
 					 $resultcx =mysql_query("select * from ledgerbalances where ledgerid='".$lid."' and stamp = '".$stamp."' limit 0,1");
                     if(mysql_num_rows($resultcx)==0){
-                        $res = mysql_query("INSERT INTO ledgerbalances VALUES ('0', '".$date."', '".$stamp."', '".$lid."', '0', '0', '0', 0.00,0,0)");
+                        $res = mysql_query("INSERT INTO ledgerbalances (id, date, stamp, ledgerid) VALUES ('0', '".$date."', '".$stamp."', '".$lid."')")  or die (mysql_error());
                         $resultcx = mysql_query("select * from ledgerbalances where ledgerid='".$lid."' and stamp = '".$stamp."' limit 0,1");
                     }
 

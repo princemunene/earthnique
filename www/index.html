@@ -94,10 +94,10 @@ $('#passwd').focus();
 }
 
 function login(){
-var database=$('#database').val();
+var userbranch=$('#database').val();
 var username=$('#username').val();
 var passwd=$('#passwd').val();
-if(database==''){
+if(userbranch==''){
 swal("Error", "Enter the Business Name!", "error");
 }
 else  if(username==''){
@@ -107,18 +107,18 @@ else  if(passwd==''){
 swal("Error", "Enter your password!", "error");
 }
 else {
-database='qetcoke_'+database;
+userbranch=userbranch.toUpperCase();
 $('#message').html('<img id="img-spinner" src="images/load.gif" style="width:30px" alt="Loading"/>');
 $.ajax({
   type: "POST",
    url: "http://"+window.localStorage.getItem('server')+"/earthnique/www/login.php",
   crossDomain: true,
   cache: false,
-  data:{username:username, passwd:passwd,database:database},
+  data:{username:username, passwd:passwd,userbranch:userbranch},
   success:function(data){
   if(data==1){
   window.localStorage.setItem('ls_userid',username);
-  window.localStorage.setItem('database',database);
+  window.localStorage.setItem('database',userbranch);
   window.location.href = "main.html";
   }else{
   $('#message').html('<img src="images/icons/blue/lock.png" alt="" title="" />');

@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 include('functions.php');  
 $id=$_GET['id'];
 $username=$_GET['user'];
-$database=$_GET['database'];
+$userbranch=$database=$_GET['database'];
 db_fns($database);
 ?>
 <style>
@@ -100,7 +100,7 @@ $fname='sales_reports';
   case 1:
 
   
-  $result =mysql_query("select * from sales  where Stamp>='".date('Ymd')."' and Stamp<='".date('Ymd')."' and Type='Sale'");
+  $result =mysql_query("select * from sales  where Stamp>='".date('Ymd')."' and Stamp<='".date('Ymd')."' and Type='Sale'  and Bname='".$userbranch."'");
   
 
   break;
@@ -108,11 +108,11 @@ $fname='sales_reports';
    case 2:
   
   if($d1==0){
-  $result =mysql_query("select * from sales where Type='Sale'");
+  $result =mysql_query("select * from sales where Type='Sale' and Bname='".$userbranch."'");
 
   }
   else{
-  $result =mysql_query("select * from sales  where Stamp>='".$d1."' and Stamp<='".$d2."' and Type='Sale'");
+  $result =mysql_query("select * from sales  where Stamp>='".$d1."' and Stamp<='".$d2."' and Type='Sale'  and Bname='".$userbranch."'");
   }
 
   break;
@@ -247,7 +247,7 @@ $fname='sales_reports';
   case 1:
 
   
-  $result =mysql_query("select * from sales  where Stamp>='".date('Ymd')."' and Stamp<='".date('Ymd')."' and Type='Credit'");
+  $result =mysql_query("select * from sales  where Stamp>='".date('Ymd')."' and Stamp<='".date('Ymd')."' and Type='Credit' and Bname='".$userbranch."'");
   
 
   break;
@@ -255,11 +255,11 @@ $fname='sales_reports';
    case 2:
   
    if($d1==0){
-  $result =mysql_query("select * from sales where Type='Credit'");
+  $result =mysql_query("select * from sales where Type='Credit' and Bname='".$userbranch."'");
 
   }
   else{
-  $result =mysql_query("select * from sales  where Stamp>='".$d1."' and Stamp<='".$d2."' and  Type='Credit'");
+  $result =mysql_query("select * from sales  where Stamp>='".$d1."' and Stamp<='".$d2."' and  Type='Credit' and Bname='".$userbranch."'");
   }
 
   break;
@@ -425,13 +425,13 @@ function loopitems($rowa,$i){
 $aa=$i+1;
 $sent='';
 if($i%2==0){$col='#fff';}else{$col='#f0f0f0';}
-$total=stripslashes($rowa['PurchPrice'])*stripslashes($rowa['Bal']);
+$total=stripslashes($rowa['PurchPrice'])*stripslashes($rowa[$userbranch]);
 echo'<tr style="width:100%; height:20px;padding:0; background:'.$col.'; font-weight:normal  ">';    
 ?>
 <td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo $aa ?></td>
 <td  style="width:45%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa['ItemName']) ?></td>
 <td  style="width:15%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa['PurchPrice']) ?></td>
-<td  style="width:15%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa['Bal']) ?></td>
+<td  style="width:15%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa[$userbranch]) ?></td>
 <td  style="width:15%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo number_format(preg_replace('~,~', '', $total), 2, ".", "," ) ?></td></tr>
 
 <?php } 
@@ -470,7 +470,7 @@ $fname='items_price_list_report';
   $num_results = mysql_num_rows($result);
   for ($i=0; $i <$num_results; $i++) {
   $row=mysql_fetch_array($result);
-  $tot+=stripslashes($row['PurchPrice'])*stripslashes($row['Bal']);
+  $tot+=stripslashes($row['PurchPrice'])*stripslashes($row[$userbranch]);
   loopitems($row,$i);
   }
 
@@ -571,11 +571,11 @@ else if($code==2){?>
 <?php
 
   if($d1==0){
-  $result =mysql_query("select * from stocktrack");
+  $result =mysql_query("select * from stocktrack where Dept='".$userbranch."'");
 
   }
   else{
-  $result =mysql_query("select * from stocktrack  where Stamp>='".$d1."' and Stamp<='".$d2."'");
+  $result =mysql_query("select * from stocktrack  where Stamp>='".$d1."' and Stamp<='".$d2."'  and Dept='".$userbranch."'");
   }
   $num_results = mysql_num_rows($result);
   for ($i=0; $i <$num_results; $i++) {
@@ -883,7 +883,7 @@ $fname='expenses_reports';
   case 1:
 
 
-  $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".date('Ymd')."' and stamp<='".date('Ymd')."'");
+  $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".date('Ymd')."' and stamp<='".date('Ymd')."'  and branchcode='".$userbranch."'");
   
 
   break;
@@ -893,11 +893,11 @@ $fname='expenses_reports';
   if($d1==0){
     
     if($name=='All'){
-         $result =mysql_query("select * from ledgerentries  where ".$ledgers."");
+         $result =mysql_query("select * from ledgerentries  where (".$ledgers.")  and branchcode='".$userbranch."'");
  
     }else{
 
-         $result =mysql_query("select * from ledgerentries  where lid=".$name."");
+         $result =mysql_query("select * from ledgerentries  where lid=".$name."  and branchcode='".$userbranch."'");
  
     }
   
@@ -905,12 +905,12 @@ $fname='expenses_reports';
   else if($d1!=0){
       
       if($name=='All'){
-         $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".$d1."' and stamp<='".$d2."'");
+         $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".$d1."' and stamp<='".$d2."'  and branchcode='".$userbranch."'");
   
  
     }else{
 
-         $result =mysql_query("select * from ledgerentries  where lid=".$name." and stamp>='".$d1."' and stamp<='".$d2."'");
+         $result =mysql_query("select * from ledgerentries  where lid=".$name." and stamp>='".$d1."' and stamp<='".$d2."'  and branchcode='".$userbranch."'");
  
     }
 
@@ -1050,7 +1050,7 @@ $fname='bank_transactions_reports';
   case 1:
 
 
-  $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".date('Ymd')."' and stamp<='".date('Ymd')."'");
+  $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".date('Ymd')."' and stamp<='".date('Ymd')."' and branchcode='".$userbranch."'");
   
 
   break;
@@ -1060,11 +1060,11 @@ $fname='bank_transactions_reports';
   if($d1==0){
     
     if($name=='All'){
-         $result =mysql_query("select * from ledgerentries  where ".$ledgers."");
+         $result =mysql_query("select * from ledgerentries  where (".$ledgers.")  and branchcode='".$userbranch."'");
  
     }else{
 
-         $result =mysql_query("select * from ledgerentries  where lid=".$name."");
+         $result =mysql_query("select * from ledgerentries  where lid=".$name."  and branchcode='".$userbranch."'");
  
     }
   
@@ -1072,12 +1072,12 @@ $fname='bank_transactions_reports';
   else if($d1!=0){
       
       if($name=='All'){
-         $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".$d1."' and stamp<='".$d2."'");
+         $result =mysql_query("select * from ledgerentries  where (".$ledgers.") and stamp>='".$d1."' and stamp<='".$d2."' and branchcode='".$userbranch."'");
   
  
     }else{
 
-         $result =mysql_query("select * from ledgerentries  where lid=".$name." and stamp>='".$d1."' and stamp<='".$d2."'");
+         $result =mysql_query("select * from ledgerentries  where lid=".$name." and stamp>='".$d1."' and stamp<='".$d2."'  and branchcode='".$userbranch."'");
  
     }
 
@@ -1178,7 +1178,7 @@ $row=mysql_fetch_array($result);
 $tot+=1;
 $type=stripslashes($row['type']);$statement='';
 if($type=='Asset'||$type=='Expense'){$normal='Debit';}else{$normal='Credit';}
-if($type=='Asset'){$statement='Trial Balance,Income Statement,Balance Sheet';}
+if($type=='Asset'){$statement='Trial Balance,Balance Sheet';}
 if($type=='Expense'){$statement='Trial Balance,Income Statement';}
 if($type=='Liability'){$statement='Trial Balance,Balance Sheet';}
 if($type=='Revenue'){$statement='Trial Balance,Income Statement';}
@@ -1310,11 +1310,11 @@ $fname='bank_transactions_reports';
   if($d1==0){
     
     if($name=='All'){
-         $result =mysql_query("select * from ledgerentries");
+         $result =mysql_query("select * from ledgerentries where  and branchcode='".$userbranch."'");
  
     }else{
 
-         $result =mysql_query("select * from ledgerentries  where lid=".$name."");
+         $result =mysql_query("select * from ledgerentries  where lid=".$name."  and branchcode='".$userbranch."'");
  
     }
   
@@ -1322,12 +1322,12 @@ $fname='bank_transactions_reports';
   else if($d1!=0){
       
       if($name=='All'){
-         $result =mysql_query("select * from ledgerentries  where  stamp>='".$d1."' and stamp<='".$d2."'");
+         $result =mysql_query("select * from ledgerentries  where  stamp>='".$d1."' and stamp<='".$d2."'  and branchcode='".$userbranch."'");
   
  
     }else{
 
-         $result =mysql_query("select * from ledgerentries  where lid=".$name." and stamp>='".$d1."' and stamp<='".$d2."'");
+         $result =mysql_query("select * from ledgerentries  where lid=".$name." and stamp>='".$d1."' and stamp<='".$d2."'  and branchcode='".$userbranch."'");
  
     }
 
@@ -1391,7 +1391,7 @@ $logo=stripslashes($row['Logo']);
 $result =mysql_query("select * from ledgers limit 0,1");
 $row=mysql_fetch_array($result);
 $date=stripslashes($row['date']);
-$name='All';
+$name=$userbranch;
 $sent='';
 
 
@@ -1545,7 +1545,7 @@ $logo=stripslashes($row['Logo']);
 $result =mysql_query("select * from ledgers limit 0,1");
 $row=mysql_fetch_array($result);
 $date=stripslashes($row['date']);
-$name='All';
+$name=$userbranch;
 $sent='';if(isset($_GET['d1'])){
   $d1=datereverse($_GET['d1']);$sent.='&d1='.preg_replace('~/~', '', $d1).'&name='.$name;
 }else $d1=0;
@@ -1717,7 +1717,7 @@ $logo=stripslashes($row['Logo']);
 $result =mysql_query("select * from ledgers limit 0,1");
 $row=mysql_fetch_array($result);
 $date=stripslashes($row['date']);
-$name='All';
+$name=$userbranch;
 $sent='';if(isset($_GET['d1'])){
   $d1=datereverse($_GET['d1']);$sent.='&d1='.preg_replace('~/~', '', $d1).'&name='.$name;
 }else $d1=0;
