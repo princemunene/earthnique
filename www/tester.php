@@ -1,4 +1,5 @@
 <?php
+/*
 // API access key from Google API's Console
 define( 'API_ACCESS_KEY', 'AIzaSyDa2shL5EVImbS0Pf7iK-_1un_xf54tlqM' );
 $registrationIds = array( $_GET['id'] );
@@ -36,5 +37,23 @@ curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
 $result = curl_exec($ch );
 curl_close( $ch );
 echo $result;
+*/
+
+$body='LKR8EMIK72 confirmed.You bought Ksh50.00 of airtime on 27/11/17 at 9:20 PM.New M-PESA balance is Ksh639.11. Transaction cost, Ksh0.00.';
+
+$filters=array();
+$filters[1]='paid to';$filters[2]='withdraw';$filters[3]='of airtime';$filters[4]='paid to';$filters[5]='sent to';$filters[6]='have received';
+
+
+$val='of airtime';
+foreach ($filters as $key => $val) {
+    if (strpos($body, $val) !== false) {
+        $type=$key;
+        $typedesc=$val;
+        //echo 'true';
+    }
+}
+
+$mil = 1511849360657;
 
 ?>
