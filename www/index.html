@@ -111,7 +111,7 @@ userbranch=userbranch.toUpperCase();
 $('#message').html('<img id="img-spinner" src="images/load.gif" style="width:30px" alt="Loading"/>');
 $.ajax({
   type: "POST",
-   url: "http://"+window.localStorage.getItem('server')+"/earthnique/www/login.php",
+   url: "http://"+window.localStorage.getItem('server')+"/qts/www/login.php",
   crossDomain: true,
   cache: false,
   data:{username:username, passwd:passwd,userbranch:userbranch},
@@ -137,7 +137,7 @@ function checknet(){
  var cart = [[]];
  localStorage.setItem("cart", JSON.stringify(cart));
 
- $("#divtest").html("<img src='http://"+window.localStorage.getItem('server')+"/earthnique/www/bullet.png' style='display:none'  onerror='checknet()' />");
+ $("#divtest").html("<img src='http://"+window.localStorage.getItem('server')+"/qts/www/bullet.png' style='display:none'  onerror='checknet()' />");
 </script>
 
 

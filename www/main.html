@@ -33,7 +33,7 @@ function auto_logout(){
       //check version
 
         $.ajax({
-        url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/bridge.php?database='+database,
+        url:'http://'+window.localStorage.getItem('server')+'/qts/www/bridge.php?database='+database,
         data:{id:22},
         success:function(data){
         $('#recdiv').html(data);
@@ -41,7 +41,7 @@ function auto_logout(){
         newversion=parseFloat(data,10);
         currentversion=parseFloat(version,10);
         if(newversion>currentversion){
-          window.open("http://www.qet.co.ke/earthnique/www/eazzypos.apk");
+          window.open("http://www.qet.co.ke/qts/www/eazzypos.apk");
           swal({
             title: "Update Available",
             text: "An update for the app is available.Follow the link on the browser to update to the latest version",
@@ -51,7 +51,7 @@ function auto_logout(){
 
           //update database
           $.ajax({
-          url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/update.php?database='+database,
+          url:'http://'+window.localStorage.getItem('server')+'/qts/www/update.php?database='+database,
           data:{id:currentversion,newversion:newversion},
           success:function(data){
           }
@@ -66,7 +66,7 @@ function auto_logout(){
         }); 
 
 
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=1&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=1&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             $.each(result, function(i, field) {
@@ -80,7 +80,7 @@ function auto_logout(){
 
        var rights =[]; rights[901]='YES';rights[902]='YES';rights[903]='YES';
        var usertype = window.localStorage.getItem('ls_usertype');
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=2&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=2&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             $.each(result, function(i, field) {
@@ -94,7 +94,7 @@ function auto_logout(){
 
 
 
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=3&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=3&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             $.each(result, function(i, field) {
@@ -111,14 +111,14 @@ function auto_logout(){
         });
 
         
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=9&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=9&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
          window.localStorage.setItem("linearr", result);
 
             //console.log(result);
         });
 
-         var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=10&user="+username+"&database="+database;
+         var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=10&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
          window.localStorage.setItem("bararr", result);
 
@@ -126,7 +126,7 @@ function auto_logout(){
         });
 
 
-         var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=11&user="+username+"&database="+database;
+         var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=11&user="+username+"&database="+database;
 
          $.getJSON(url, function(result) {
 
@@ -136,14 +136,14 @@ function auto_logout(){
             //console.log(result);
         });
 
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=14&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=14&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             window.localStorage.setItem("dashdata", result);
            
         }); 
 
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=15&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=15&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             window.localStorage.setItem("notifications", JSON.stringify(result));
@@ -152,13 +152,13 @@ function auto_logout(){
         }); 
 
         //items
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=4&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=4&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             localStorage.setItem("items", JSON.stringify(result));
         });
 
         //customers
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=23&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=23&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             localStorage.setItem("customers", JSON.stringify(result));
         });
@@ -166,7 +166,7 @@ function auto_logout(){
        });
 
          //daily notifications
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=21&user="+username+"&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=21&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
            
         });

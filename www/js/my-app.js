@@ -404,7 +404,7 @@ function setpaymentticket(ticketno){
 }
 myApp.onPageInit('blog', function (page) {
 var param = '';
-var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=5&param="+param+"&database="+database;
+var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=5&param="+param+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             $.each(result, function(i, field) {
@@ -429,7 +429,7 @@ function todaysales(){
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:1,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -453,7 +453,7 @@ function salesrep(code){
 
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:1,code:2,user:username,d1:from,d2:to},
       success:function(data){
       $('#reportdiv').html(data);
@@ -470,7 +470,7 @@ function todayrefunds(){
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:2,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -494,7 +494,7 @@ function refundsrep(code){
 
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:2,code:2,user:username,d1:from,d2:to},
       success:function(data){
       $('#reportdiv').html(data);
@@ -509,7 +509,7 @@ function pricelist(){
  
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:3,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -522,7 +522,7 @@ function valuation(){
  
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:4,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -545,7 +545,7 @@ function stocktrackrep(code){
 
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:5,code:2,user:username,d1:from,d2:to},
       success:function(data){
       $('#reportdiv').html(data);
@@ -560,7 +560,7 @@ function sysusers(){
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:7,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -576,7 +576,7 @@ function todayexpenses(){
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:8,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -604,7 +604,7 @@ function exprep(code){
 
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:8,code:2,user:username,d1:from,d2:to,name:name},
       success:function(data){
       $('#reportdiv').html(data);
@@ -620,7 +620,7 @@ function todaybank(){
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:9,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -645,7 +645,7 @@ function bankrep(code){
 
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:9,code:2,user:username,d1:from,d2:to,name:name},
       success:function(data){
       $('#reportdiv').html(data);
@@ -661,7 +661,7 @@ function chartofaccounts(){
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
     data:{id:10,code:1,user:username},
     success:function(data){
     $('#reportdiv').html(data);
@@ -683,7 +683,7 @@ function ledrep(code){
 
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:11,code:2,user:username,d1:from,d2:to,name:name},
       success:function(data){
       $('#reportdiv').html(data);
@@ -707,7 +707,7 @@ function finrep(code){
 
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:id,code:2,user:username,d1:from,d2:to},
       success:function(data){
       $('#reportdiv').html(data);
@@ -726,7 +726,7 @@ function tickaccess(a,b){
    
          
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:6,categ:a,code:b,rght:param},
     success:function(data){
 
@@ -771,7 +771,7 @@ myApp.onPageInit('dashboard', function (page)  {
 
 	//update notifications 
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:12,user:username},
     success:function(data){
     }
@@ -885,7 +885,7 @@ myApp.onPageInit('features', function (page) {
 myApp.onPageInit('reports', function (page) {
 $( ".datepicker" ).datepicker()
     $.ajax({
-      url:"http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=16&type=Expense&database="+database,
+      url:"http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=16&type=Expense&database="+database,
       data:{},
       success:function(result){
             
@@ -898,7 +898,7 @@ $( ".datepicker" ).datepicker()
       }
       }); 
 
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=17&subcat=Bank&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=17&subcat=Bank&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             for (var i=0;i<result.length;i++){
@@ -909,7 +909,7 @@ $( ".datepicker" ).datepicker()
         });
 
 
-         var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=20&database="+database;
+         var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=20&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             for (var i=0;i<result.length;i++){
@@ -973,7 +973,7 @@ myApp.onPageInit('listshop', function (page) {
 myApp.onPageInit('refunds', function (page) {
  $('#myInput').focus();
  var param = '';
-	var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=6&param="+param+"&database="+database;
+	var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=6&param="+param+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             $("#myUL").html('');
@@ -1002,7 +1002,7 @@ myApp.onPageInit('refunds', function (page) {
         var param=$('#myInput').val();
         var enterKey = 13;
 	        if (e.which == enterKey&&param!=''){
-	        		var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=7&rcptno="+param+"&database="+database;
+	        		var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=7&rcptno="+param+"&database="+database;
 			        $.getJSON(url, function(result) {
 			           
 			            	$.each(result, function(i, field) {
@@ -1125,7 +1125,7 @@ myApp.onPageInit('addcontrol', function (page) {
 	        
 	    var itemcode = window.localStorage.getItem('controlcode');
 			$.ajax({
-			url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/bridge.php?database='+database,
+			url:'http://'+window.localStorage.getItem('server')+'/qts/www/bridge.php?database='+database,
 			data:{id:13,itemcode:itemcode},
 			success:function(data){
 			$('#recdiv').html(data);
@@ -1140,7 +1140,7 @@ $( ".datepicker" ).datepicker();
 
 
       $.ajax({
-      url:"http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=16&type=Expense&database="+database,
+      url:"http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=16&type=Expense&database="+database,
       data:{},
       success:function(result){
             
@@ -1154,7 +1154,7 @@ $( ".datepicker" ).datepicker();
       }); 
 
         /*
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=16&type=Expense&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=16&type=Expense&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             for (var i=0;i<result.length;i++){
@@ -1169,7 +1169,7 @@ $( ".datepicker" ).datepicker();
 
 myApp.onPageInit('bank', function (page) {
 $( ".datepicker" ).datepicker();
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=17&subcat=Bank&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=17&subcat=Bank&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             for (var i=0;i<result.length;i++){
@@ -1183,7 +1183,7 @@ $( ".datepicker" ).datepicker();
 
 
 myApp.onPageInit('settings', function (page) {
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
             for (var i=0;i<result.length;i++){
@@ -1195,7 +1195,7 @@ myApp.onPageInit('settings', function (page) {
         });
 
         $("#myrights").append("<li class=\"table_row\"><div class=\"table_section_14\">Description</div><div class=\"table_section_14\">Admin</div> <div class=\"table_section_14\">Manager</div> <div class=\"table_section_14\">Cashier</div></li>");
-        var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=19&database="+database;
+        var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=19&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
            
@@ -1256,14 +1256,14 @@ if(type=='GOOD'){$('.goodiv').show();}else{$('.goodiv').hide();}
 }
 
 function updateitems(){
-		var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=4&database="+database;
+		var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=4&database="+database;
         $.getJSON(url, function(result) {
             localStorage.setItem("items", JSON.stringify(result));
         });
 }
 
 function updatecustomers(){
-    var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=23&database="+database;
+    var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=23&database="+database;
         $.getJSON(url, function(result) {
             localStorage.setItem("customers", JSON.stringify(result));
         });
@@ -1288,7 +1288,7 @@ var saleprice = $('#saleprice').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
 	else{
 		$("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+		url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 		data:{id:7,user:username,itemname:itemname,type:type,qty:qty,purchprice:purchprice,saleprice:saleprice,minbal:minbal},
 		success:function(data){
 		$('#recdiv').html(data);
@@ -1316,7 +1316,7 @@ var saleprice = $('#saleprice').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
 	else{
 		$("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+		url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 		data:{id:8,user:username,itemcode:itemcode,itemname:itemname,type:type,purchprice:purchprice,saleprice:saleprice,minbal:minbal},
 		success:function(data){
 		$('#recdiv').html(data);
@@ -1343,7 +1343,7 @@ function deleteitem(){
 
 		$("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+		url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 		data:{id:9,user:username,itemcode:itemcode},
 		success:function(data){
 		$('#recdiv').html(data);
@@ -1374,7 +1374,7 @@ var phone = $('#cusphone').val();
   else{
     $("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:17,user:username,name:name,phone:phone},
     success:function(data){
     $('#recdiv').html(data);
@@ -1398,7 +1398,7 @@ var cusno = $('#cusno').val();
   else{
     $("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:18,user:username,name:name,phone:phone,cusno:cusno},
     success:function(data){
     $('#recdiv').html(data);
@@ -1424,7 +1424,7 @@ function deletecustomer(){
 
     $("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:19,user:username,cusno:cusno},
     success:function(data){
     $('#recdiv').html(data);
@@ -1457,7 +1457,7 @@ function deleteuser(){
 
     $("#saveuser2").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:15,user:username,userid:userid},
     success:function(data){
     $('#saveuser2').html(data);
@@ -1486,7 +1486,7 @@ var qty = $('#qty').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
 	else{
 		$("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+		url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 		data:{id:11,user:username,itemcode:itemcode,itemname:itemname,type:type,qty:qty,description:description},
 		success:function(data){
 		$('#recdiv').html(data);
@@ -1515,7 +1515,7 @@ var email = $('#email').val();
 
     $('#messagediv').html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:10,name:name,message:message,email:email},
     success:function(data){
     $('#messagediv').html(data);
@@ -1555,7 +1555,7 @@ var amount = $('#amount').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
   else{
     $("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:13,user:username,ledger:ledger,date:date,description:description,amount:amount},
     success:function(data){
     $('#recdiv').html(data);
@@ -1580,7 +1580,7 @@ var amount = $('#amount').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
   else{
     $("#recdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:14,user:username,ledger:ledger,date:date,description:description,amount:amount,refno:refno},
     success:function(data){
     $('#recdiv').html(data);
@@ -1598,13 +1598,13 @@ myApp.onPageInit('shopitem', function (page) {
          	var itemcode = window.localStorage.getItem('shopitemcode');
 			
 			$.ajax({
-			url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/bridge.php?database='+database,
+			url:'http://'+window.localStorage.getItem('server')+'/qts/www/bridge.php?database='+database,
 			data:{id:5,itemcode:itemcode},
 			success:function(data){
 			$('#recdiv').html(data);
 			displayifexists(array,itemcode);
 
-			$("#itempic").html("<object data=\"http://"+window.localStorage.getItem('server')+"/earthnique/www/images/items/"+itemcode+".jpg\" type=\"image/jpeg\" width=\"300px\"><img src=\"images/items/default.jpg\" /></object>");
+			$("#itempic").html("<object data=\"http://"+window.localStorage.getItem('server')+"/qts/www/images/items/"+itemcode+".jpg\" type=\"image/jpeg\" width=\"300px\"><img src=\"images/items/default.jpg\" /></object>");
 
 			}
 			});
@@ -1630,7 +1630,7 @@ myApp.onPageInit('checkout', function (page) {
 	  $('#tendered').focus();
      var cusno = window.localStorage.getItem('salecusno');
      $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/bridge.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/bridge.php?database='+database,
       data:{id:24,cusno:cusno},
       success:function(data){
       $('#recdiv').html(data);
@@ -1645,7 +1645,7 @@ myApp.onPageInit('checkout', function (page) {
 
 myApp.onPageInit('newitem', function (page) {
           
-      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/earthnique/www/upload.php?database='+database);
+      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/qts/www/upload.php?database='+database);
       
      
 })
@@ -1654,14 +1654,14 @@ myApp.onPageInit('newitem', function (page) {
 myApp.onPageInit('edititem', function (page) {
 	        
 	    var itemcode = window.localStorage.getItem('sysitemcode');
-      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/earthnique/www/upload.php?database='+database);
+      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/qts/www/upload.php?database='+database);
 			
 			$.ajax({
-			url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/bridge.php?database='+database,
+			url:'http://'+window.localStorage.getItem('server')+'/qts/www/bridge.php?database='+database,
 			data:{id:12,itemcode:itemcode},
 			success:function(data){
 			$('#recdiv').html(data);
-			$("#leipic").html(" <iframe name=\"leiframe\" id=\"leiframe\" class=\"leiframe\" src=\"http://"+window.localStorage.getItem('server')+"/earthnique/www/images/items/"+itemcode+".jpg\"> </iframe>");
+			$("#leipic").html(" <iframe name=\"leiframe\" id=\"leiframe\" class=\"leiframe\" src=\"http://"+window.localStorage.getItem('server')+"/qts/www/images/items/"+itemcode+".jpg\"> </iframe>");
 
 			}
 			});
@@ -1671,9 +1671,9 @@ myApp.onPageInit('edititem', function (page) {
 
 myApp.onPageInit('newcustomer', function (page) {
           
-      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/earthnique/www/upload.php?database='+database);
+      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/qts/www/upload.php?database='+database);
        $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/bridge.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/bridge.php?database='+database,
       data:{id:25},
       success:function(data){
       $('#recdiv').html(data);
@@ -1687,14 +1687,14 @@ myApp.onPageInit('newcustomer', function (page) {
 myApp.onPageInit('editcustomer', function (page) {
           
       var cusno = window.localStorage.getItem('syscusno');
-      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/earthnique/www/upload.php?database='+database);
+      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/qts/www/upload.php?database='+database);
       
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/bridge.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/bridge.php?database='+database,
       data:{id:24,cusno:cusno},
       success:function(data){
       $('#recdiv').html(data);
-      $("#leipic").html(" <iframe name=\"leiframe\" id=\"leiframe\" class=\"leiframe\" src=\"http://"+window.localStorage.getItem('server')+"/earthnique/www/images/customers/"+cusno+".jpg\"> </iframe>");
+      $("#leipic").html(" <iframe name=\"leiframe\" id=\"leiframe\" class=\"leiframe\" src=\"http://"+window.localStorage.getItem('server')+"/qts/www/images/customers/"+cusno+".jpg\"> </iframe>");
 
       }
       });
@@ -1761,7 +1761,7 @@ myApp.onPageInit('currentcart', function (page) {
 	 for (var i=1;i<array.length;i++){
 	 		var num=pad(i,2);
 	 		tot+=parseFloat(array[i][4],10);
-	 		$("#cartdiv").append("<div class=\"cart_item\" id=\"cartitem"+i+"\"><div class=\"item_title\"><span>"+num+".</span>"+array[i][1]+"</div><div class=\"item_price\" id=\"itemprice"+i+"\">"+array[i][4]+"</div><div class=\"item_thumb\" onclick='setshopcode("+array[i][0]+")'><a href=\"shop-item.html\" class=\"close-panel\"><object data=\"http://"+window.localStorage.getItem('server')+"/earthnique/www/images/items/"+array[i][0]+".jpg\"  width=\"100%\" type=\"image/jpeg\"><img src=\"images/items/default.jpg\" /></object></a></div> <div class=\"item_qnty\"><form id=\"myform\" method=\"POST\" action=\"#\"><label>QUANTITY</label> <input type=\"button\" value=\"-\" class=\"qntyminus\" field=\"quantity"+i+"\" style=\"color:#333\" /><input type=\"number\"  onclick=\"setCursor('quantity"+i+"')\"  id=\"quantity"+i+"\"  name=\"quantity"+i+"\" value=\""+array[i][2]+"\" class=\"qnty\"  style=\"color:#333\"  /><input type=\"button\" value=\"+\" class=\"qntyplus\" field=\"quantity"+i+"\"  style=\"color:#333\"  /></form></div><a href=\"#\" class=\"item_delete\" onclick=\"delitemcart("+i+")\"><img src=\"images/icons/blue/trash.png\" alt=\"\" title=\"\" /></a></div>");
+	 		$("#cartdiv").append("<div class=\"cart_item\" id=\"cartitem"+i+"\"><div class=\"item_title\"><span>"+num+".</span>"+array[i][1]+"</div><div class=\"item_price\" id=\"itemprice"+i+"\">"+array[i][4]+"</div><div class=\"item_thumb\" onclick='setshopcode("+array[i][0]+")'><a href=\"shop-item.html\" class=\"close-panel\"><object data=\"http://"+window.localStorage.getItem('server')+"/qts/www/images/items/"+array[i][0]+".jpg\"  width=\"100%\" type=\"image/jpeg\"><img src=\"images/items/default.jpg\" /></object></a></div> <div class=\"item_qnty\"><form id=\"myform\" method=\"POST\" action=\"#\"><label>QUANTITY</label> <input type=\"button\" value=\"-\" class=\"qntyminus\" field=\"quantity"+i+"\" style=\"color:#333\" /><input type=\"number\"  onclick=\"setCursor('quantity"+i+"')\"  id=\"quantity"+i+"\"  name=\"quantity"+i+"\" value=\""+array[i][2]+"\" class=\"qnty\"  style=\"color:#333\"  /><input type=\"button\" value=\"+\" class=\"qntyplus\" field=\"quantity"+i+"\"  style=\"color:#333\"  /></form></div><a href=\"#\" class=\"item_delete\" onclick=\"delitemcart("+i+")\"><img src=\"images/icons/blue/trash.png\" alt=\"\" title=\"\" /></a></div>");
             
 	}
 
@@ -1868,7 +1868,7 @@ myApp.onPageInit('creditnote', function (page) {
 	 		localStorage.setItem("creditnote", JSON.stringify(creditnote));
          	var saleno = window.localStorage.getItem('refundcode');
          	tot=0;
-         	var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=8&saleno="+saleno+"&database="+database;
+         	var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=8&saleno="+saleno+"&database="+database;
         	$.getJSON(url, function(result) {
             console.log(result);
             //reprint receipt
@@ -1881,7 +1881,7 @@ myApp.onPageInit('creditnote', function (page) {
                  var num=i+1;
                  num=pad(num,2);
 			 		
-			 		$("#cartdiv").append("<div class=\"cart_item\" id=\"cartitem"+i+"\"><div class=\"item_title\"><span>"+num+".</span>"+field.ItemName+"</div><input type=\"hidden\" id=\"itemname"+i+"\"  value=\""+field.ItemName+"\"/><input type=\"hidden\" id=\"itemcode"+i+"\"  value=\""+field.ItemCode+"\"/><input type=\"hidden\" id=\"recprice"+i+"\"  value=\""+field.UnitPrice+"\"/><input type=\"hidden\" id=\"transno"+i+"\"  value=\""+field.TransNo+"\"/><div class=\"item_price\" id=\"itemprice"+i+"\">0.00</div><div class=\"item_thumb\"><a class=\"close-panel\"><object data=\"http://"+window.localStorage.getItem('server')+"/earthnique/www/images/items/"+field.ItemCode+".jpg\"  width=\"100%\" type=\"image/jpeg\"><img src=\"images/items/default.jpg\" /></object></a></div> <div class=\"item_qnty\"><form id=\"myform\" method=\"POST\" action=\"#\"><label>QUANTITY</label> <input type=\"button\" value=\"-\" class=\"qntyminus\" field=\"quantity"+i+"\" style=\"color:#333\" /><input type=\"hidden\" id=\"recquantity"+i+"\"  name=\"recquantity"+i+"\" value=\""+field.Qty+"\"/><input type=\"number\"  onclick=\"setCursor('quantity"+i+"')\"  id=\"quantity"+i+"\"  name=\"quantity"+i+"\" value=\"0\" class=\"qnty\"  style=\"color:#333\"  /><input type=\"button\" value=\"+\" class=\"qntyplus\" field=\"quantity"+i+"\"  style=\"color:#333\"  /></form></div><a href=\"#\" class=\"item_delete\" onclick=\"saveitemcredit("+i+","+field.ItemCode+")\"><img src=\"images/icons/blue/logout.png\" alt=\"\" title=\"\" /></a></div>");
+			 		$("#cartdiv").append("<div class=\"cart_item\" id=\"cartitem"+i+"\"><div class=\"item_title\"><span>"+num+".</span>"+field.ItemName+"</div><input type=\"hidden\" id=\"itemname"+i+"\"  value=\""+field.ItemName+"\"/><input type=\"hidden\" id=\"itemcode"+i+"\"  value=\""+field.ItemCode+"\"/><input type=\"hidden\" id=\"recprice"+i+"\"  value=\""+field.UnitPrice+"\"/><input type=\"hidden\" id=\"transno"+i+"\"  value=\""+field.TransNo+"\"/><div class=\"item_price\" id=\"itemprice"+i+"\">0.00</div><div class=\"item_thumb\"><a class=\"close-panel\"><object data=\"http://"+window.localStorage.getItem('server')+"/qts/www/images/items/"+field.ItemCode+".jpg\"  width=\"100%\" type=\"image/jpeg\"><img src=\"images/items/default.jpg\" /></object></a></div> <div class=\"item_qnty\"><form id=\"myform\" method=\"POST\" action=\"#\"><label>QUANTITY</label> <input type=\"button\" value=\"-\" class=\"qntyminus\" field=\"quantity"+i+"\" style=\"color:#333\" /><input type=\"hidden\" id=\"recquantity"+i+"\"  name=\"recquantity"+i+"\" value=\""+field.Qty+"\"/><input type=\"number\"  onclick=\"setCursor('quantity"+i+"')\"  id=\"quantity"+i+"\"  name=\"quantity"+i+"\" value=\"0\" class=\"qnty\"  style=\"color:#333\"  /><input type=\"button\" value=\"+\" class=\"qntyplus\" field=\"quantity"+i+"\"  style=\"color:#333\"  /></form></div><a href=\"#\" class=\"item_delete\" onclick=\"saveitemcredit("+i+","+field.ItemCode+")\"><img src=\"images/icons/blue/logout.png\" alt=\"\" title=\"\" /></a></div>");
 		            
 
 				 });
@@ -2340,7 +2340,7 @@ function submitrefund(){
 
 			
 			$.ajax({
-			url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+			url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 			data:{id:2,fintot:total,saleno:saleno,creditnote:creditnote,user:username},
 			success:function(data){
 			setTimeout(function() {window.location.href = "main.html";}, 1000);
@@ -2398,7 +2398,7 @@ function postreceipt(){
 
 			
 			$.ajax({
-			url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+			url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 			data:{id:1,name:name,user:username,phone:phone,fintot:total,tendered:tendered,changeam:changeam,paymode:paymode,cart:cart,refno:refno,cusno:cusno},
 			success:function(data){
 			//data=JSON.parse(data);
@@ -2426,7 +2426,7 @@ function searchtickets(e){
 		var enterKey = 13;
         if (e.which == enterKey&&param!=''){
         	$(".post_entry").html('');
-        	var url = "http://"+window.localStorage.getItem('server')+"/earthnique/www/bridge.php?id=5&param="+param+"&database="+database;
+        	var url = "http://"+window.localStorage.getItem('server')+"/qts/www/bridge.php?id=5&param="+param+"&database="+database;
         	$.getJSON(url, function(result) {
             console.log(result);
             $.each(result, function(i, field) {
@@ -2460,7 +2460,7 @@ function savepass(){
 	else{
 	$("#savepass").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 	$.ajax({
-	url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+	url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 	data:{id:3,opass:opass,npass:npass,cpass:cpass,user:username},
 	success:function(data){
 	$('#savepass').html(data);
@@ -2491,7 +2491,7 @@ var pos = $('#userpos').val();
 	else{
 		$("#saveuser").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+		url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 		data:{id:4,user:user,name:name,pos:pos,pass:pass,username:username},
 		success:function(data){
 		$('#saveuser').html(data);
@@ -2536,7 +2536,7 @@ if(respass!=1){respass=0}
 	else{
 		$("#saveuser2").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+		url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
 		data:{id:5,user:user,name:name,pos:pos,userid:userid,respass:respass,username:username},
 		success:function(data){
 		$('#saveuser2').html(data);
@@ -2564,7 +2564,7 @@ var location = $('#description').val();
   else{
     $("#savecom").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/data.php?database='+database,
+    url:'http://'+window.localStorage.getItem('server')+'/qts/www/data.php?database='+database,
     data:{id:16,user:username,comname:comname,tel:tel,address:address,website:website,email:email,location:location},
     success:function(data){
     $('#savecom').html(data);
@@ -2589,7 +2589,7 @@ function audittrail(){
 		    
        $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
-      url:'http://'+window.localStorage.getItem('server')+'/earthnique/www/report.php?database='+database,
+      url:'http://'+window.localStorage.getItem('server')+'/qts/www/report.php?database='+database,
       data:{id:6,code:1,user:username,d1:from,d2:to},
       success:function(data){
       $('#reportdiv').html(data);
